@@ -1,4 +1,4 @@
-<h1 align="center">Bienvenue sur model_ts 👋</h1>
+<h1 align="center">Bienvenue sur Bait 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
@@ -15,14 +15,6 @@
 npm install
 ```
 
-
-## Usage
-
-```sh
-npm run start
-```
-
-
 ## Auteur
 
 👤 **Anthony Gorski**
@@ -31,11 +23,9 @@ npm run start
 -   𝕏 : [@Gorski_Anthony](https://twitter.com/Gorski_Anthony)
 -   🐙 : [@GorskiAnthony](https://github.com/GorskiAnthony)
 
-
 ## Affichez votre soutien
 
-Donnez un ⭐️ si ce projet vous a aidé !
----
+## Donnez un ⭐️ si ce projet vous a aidé !
 
 ### 🗃️ Version
 

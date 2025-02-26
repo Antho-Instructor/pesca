@@ -1,24 +1,17 @@
 {
-	"name": "model_ts",
+	"name": "bait",
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"start": "node dist/index.js",
-		"build": "tsc",
-		"dev": "ts-node-dev --respawn --transpile-only src/index.ts"
+		"preinstall": "npm install --prefix backend && npm install --prefix frontend",
+		"dev": "concurrently -c \"blue,green\" --names \"backend,frontend\" \"npm run start --prefix backend\" \"npm run start --prefix frontend\"",
+		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"description": "",
 	"dependencies": {
-		"@types/express": "^5.0.0",
-		"@types/node": "^22.13.4",
-		"express": "^4.21.2",
-		"ts-node": "^10.9.2",
-		"typescript": "^5.7.3"
-	},
-	"devDependencies": {
-		"ts-node-dev": "^2.0.0"
+		"concurrently": "^9.1.2"
 	}
 }
