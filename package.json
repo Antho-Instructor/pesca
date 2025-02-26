@@ -5,6 +5,7 @@
 	"scripts": {
 		"preinstall": "npm install --prefix backend && npm install --prefix frontend",
 		"dev": "concurrently -c \"blue,green\" --names \"backend,frontend\" \"npm run start --prefix backend\" \"npm run start --prefix frontend\"",
+		"seed": "npm run seed --prefix backend",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],

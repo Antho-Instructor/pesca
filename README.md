@@ -20,10 +20,24 @@ Un développeur a déjà commencé à travailler sur le site web et fini le fron
 Toute la documentation se trouve ici : [Documentation technique](./documentation.md)
 Vous pouvez tester l'API avec `Postman`, `Insomnia` ou directement dans le navigateur avec swagger ici : [Swagger](http://localhost:5050/api-docs)
 
+## Prérequis
+
+Il faut avoir installé sur votre machine :
+
+-   Node.js
+-   SQLite
+
 ## Install
 
 ```sh
 npm install
+```
+
+## Usage
+
+```sh
+npm run seed  # Pour remplir la base de données
+npm run dev
 ```
 
 ## Auteur
