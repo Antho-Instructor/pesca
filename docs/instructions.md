@@ -15,6 +15,14 @@ D'ailleurs, j'ai initialisé le backend en `TS` avec `Express` et `SQLite` pour 
 -   [x] Initialisation de la base de données
 -   [x] Initialisation des models
 
+Pour tester les models, j'ai créé un fichier `test.ts` dans le dossier `tests` qui te permettra de tester les models.
+
+Il faut que tu fasses la commande suivante :
+
+```bash
+npm run test:sqlite
+```
+
 ## Ce qu'il te reste à faire
 
 Et bien, il te reste à faire :

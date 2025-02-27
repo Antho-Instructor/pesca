@@ -1,7 +1,8 @@
 import Database from "better-sqlite3";
+import path from "path";
 
-// Nom du fichier de la base
-export const dbName = "database.db";
+// Force un chemin absolu pour éviter les conflits
+export const dbName = path.resolve(__dirname, "../database.db");
 
-// Création de la connexion SQLite
+// Création de la base de données
 export const db = new Database(dbName, { verbose: console.log });
