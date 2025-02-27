@@ -15,17 +15,19 @@ L'entreprise pour laquelle vous allez travailler s'appelle `Pesca` et elle est s
 
 Un développeur a déjà commencé à travailler sur le site web et fini le frontend mais il n'a pas pu terminer backend. Vous avez donc été contacté pour terminer le travail, en vous basant sur la documentation technique fournie par le développeur précédent.
 
+Vous pouvez retrouver toutes les instructions du développeur précédent ici : [Instructions](./docs/instructions.md)
+
 ## Documentation technique
 
-Toute la documentation se trouve ici : [Documentation technique](./documentation.md)
-Vous pouvez tester l'API avec `Postman`, `Insomnia` ou directement dans le navigateur avec swagger ici : [Swagger](http://localhost:5050/api-docs)
+Toute la documentation se trouve ici : [Documentation technique](./docs/documentation.md)
+Vous pouvez tester l'API avec `Postman`, `Insomnia` ou directement dans le navigateur avec swagger ici : [Swagger](http://localhost:5050/api-docs) (une fois le projet cloné et lancé).
 
 ## Prérequis
 
-Il faut avoir installé sur votre machine :
-
 -   Node.js
--   SQLite
+-   npm
+-   IDE
+-   Postman ou Insomnia
 
 ## Install
 

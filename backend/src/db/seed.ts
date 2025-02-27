@@ -25,6 +25,7 @@ if (!fs.existsSync(seedPath)) {
 }
 
 const sql = fs.readFileSync(seedPath, "utf8");
+
 db.exec(sql);
 console.log("📦 Données initialisées avec succès !");
 
