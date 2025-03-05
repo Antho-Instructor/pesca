@@ -38,7 +38,7 @@ npm install
 ## Usage
 
 ```sh
-npm run seed  # Pour remplir la base de données
+npm run seed  # ne pas oublier de remplir la base de données.
 npm run dev
 ```
 

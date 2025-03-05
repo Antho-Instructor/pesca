@@ -74,6 +74,7 @@ Vous pouvez accéder à Swagger à l'adresse suivante : `http://localhost:5050/a
 #### `Product`
 
 -   `getProducts()` : Récupère tous les produits
+-   `getProductsJoinCategories()` : Récupère tous les produits avec les noms des catégories (pour la page d'accueil)
 -   `getProduct(id: number)` : Récupère un produit spécifique
 -   `createProduct(name: string, description: string, price: number, category_id: number, image: string)` : Crée un nouveau produit
 -   `updateProduct(id: number, name: string, description: string, price: number, category_id: number, image: string)` : Modifie un produit existant
