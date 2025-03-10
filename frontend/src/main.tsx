@@ -9,6 +9,7 @@ import Category from "./pages/Category.tsx";
 import Cart from "./pages/Cart.tsx";
 import { CartProvider } from "./context/CartContext.tsx";
 import UniqueProduct from "./components/UniqueProduct.tsx";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
 	{
@@ -75,6 +76,18 @@ createRoot(rootElement).render(
 	<StrictMode>
 		<CartProvider>
 			<RouterProvider router={router} />
+			<ToastContainer
+				position="top-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="colored"
+			/>
 		</CartProvider>
 	</StrictMode>
 );

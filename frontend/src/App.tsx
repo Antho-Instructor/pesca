@@ -2,13 +2,6 @@ import { useLoaderData } from "react-router-dom";
 import Card from "./components/Card";
 import Testimonials from "./components/Testimonials";
 
-interface Product {
-	id: number;
-	name: string;
-	description: string;
-	category_name: string;
-}
-
 function App() {
 	const data = useLoaderData() as Product[];
 

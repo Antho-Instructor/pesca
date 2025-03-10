@@ -1,11 +1,13 @@
 interface Product {
-	id: string;
+	id: number;
 	name: string;
 	description: string;
 	price: number;
 	image: string;
 	stock: number;
 	category: string;
+	category_name: string;
+	quantity: number;
 }
 
 interface ProductPriceProps {
