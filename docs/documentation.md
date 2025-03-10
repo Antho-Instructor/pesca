@@ -15,6 +15,7 @@ La base de donnée utilisé : `SQLite`
 
 -   `id` : identifiant de la catégorie (clé primaire)
 -   `name` : nom de la catégorie
+-   `slug` : slug de la catégorie
 -   `created_at` : date de création de la catégorie
 -   `updated_at` : date de mise à jour de la catégorie
 
@@ -46,7 +47,7 @@ Vous pouvez accéder à Swagger à l'adresse suivante : `http://localhost:5050/a
 | **Catégories**                     |          |                                      |                                                       |                                                                                                                                                                                                             |
 | Catégories                         | `GET`    | `/categories`                        | Récupère toutes les catégories                        | -                                                                                                                                                                                                           |
 | Catégorie                          | `GET`    | `/categories/:id`                    | Récupère une catégorie spécifique                     | -                                                                                                                                                                                                           |
-| Catégorie                          | `POST`   | `/categories`                        | Crée une nouvelle catégorie                           | `{ "name": "Appâts" }`                                                                                                                                                                                      |
+| Catégorie                          | `POST`   | `/categories`                        | Crée une nouvelle catégorie                           | `{ "name": "Appâts", "slug": "appats" }`                                                                                                                                                                    |
 | Catégorie                          | `PUT`    | `/categories/:id`                    | Modifie une catégorie existante                       | `{ "name": "Matériel de pêche" }`                                                                                                                                                                           |
 | Catégorie                          | `DELETE` | `/categories/:id`                    | Supprime une catégorie                                | -                                                                                                                                                                                                           |
 | **Produits**                       |          |                                      |                                                       |                                                                                                                                                                                                             |
@@ -55,7 +56,7 @@ Vous pouvez accéder à Swagger à l'adresse suivante : `http://localhost:5050/a
 | Produit                            | `POST`   | `/products`                          | Crée un nouveau produit                               | `{ "name": "Leurre Rapala", "description": "Leurre flottant idéal pour les carnassiers.", "price": 12.99, "category_id": 1, "image": "https://exemple.com/images/leurre-rapala.jpg" }`                      |
 | Produit                            | `PUT`    | `/products/:id`                      | Modifie un produit existant                           | `{ "name": "Leurre Rapala XXL", "description": "Version plus grande pour attraper de plus gros poissons.", "price": 19.99, "category_id": 1, "image": "https://exemple.com/images/leurre-rapala-xxl.jpg" }` |
 | Produit                            | `DELETE` | `/products/:id`                      | Supprime un produit                                   | -                                                                                                                                                                                                           |
-| Produits par catégorie             | `GET`    | `/products/category/:id`             | Récupère tous les produits d'une catégorie            | -                                                                                                                                                                                                           |
+| Produits par catégorie             | `GET`    | `/products/category/:slug`           | Récupère tous les produits d'une catégorie            | -                                                                                                                                                                                                           |
 | Produit spécifique d’une catégorie | `GET`    | `/products/category/:id/:product_id` | Récupère un produit spécifique d'une catégorie donnée | -                                                                                                                                                                                                           |
 
 ## 🗄️ Les models
@@ -69,7 +70,6 @@ Vous pouvez accéder à Swagger à l'adresse suivante : `http://localhost:5050/a
 -   `createCategory(name: string)` : Crée une nouvelle catégorie
 -   `updateCategory(id: number, name: string)` : Modifie une catégorie existante
 -   `deleteCategory(id: number)` : Supprime une catégorie
--   `getAllProductsByCategory(id: number)` : Récupère tous les produits d'une catégorie
 
 #### `Product`
 
@@ -79,4 +79,5 @@ Vous pouvez accéder à Swagger à l'adresse suivante : `http://localhost:5050/a
 -   `createProduct(name: string, description: string, price: number, category_id: number, image: string)` : Crée un nouveau produit
 -   `updateProduct(id: number, name: string, description: string, price: number, category_id: number, image: string)` : Modifie un produit existant
 -   `deleteProduct(id: number)` : Supprime un produit
+-   `getProductsByCategorySlug(slug: string)` : Récupère tous les produits d'une catégorie
 -   `getOneProductByCategory(id: number, product_id: number)` : Récupère un produit spécifique d'une catégorie donnée

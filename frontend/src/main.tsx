@@ -7,6 +7,8 @@ import Layout from "./pages/Layout.tsx";
 import "./index.css";
 import Category from "./pages/Category.tsx";
 import Cart from "./pages/Cart.tsx";
+import { CartProvider } from "./context/CartContext.tsx";
+import UniqueProduct from "./components/UniqueProduct.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -28,6 +30,32 @@ const router = createBrowserRouter([
 			{
 				path: "/categories/:slug",
 				element: <Category />,
+				loader: async ({ params }) => {
+					try {
+						const response = await api.get(
+							`/products/category/${params.slug}`
+						);
+						return response.data;
+					} catch (error) {
+						console.error(error);
+						return null;
+					}
+				},
+			},
+			{
+				path: "/products/:id",
+				element: <UniqueProduct />,
+				loader: async ({ params }) => {
+					try {
+						const response = await api.get(
+							`/products/${params.id}`
+						);
+						return response.data;
+					} catch (error) {
+						console.error(error);
+						return null;
+					}
+				},
 			},
 			{
 				path: "/cart",
@@ -45,6 +73,8 @@ if (rootElement === null) {
 
 createRoot(rootElement).render(
 	<StrictMode>
-		<RouterProvider router={router} />
+		<CartProvider>
+			<RouterProvider router={router} />
+		</CartProvider>
 	</StrictMode>
 );
