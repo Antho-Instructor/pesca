@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 
-interface CardProps {
-	category: string;
-	title: string;
-	description: string;
-}
-
-function Card({ category, title, description }: CardProps) {
+function Card({ category, title, description, id, isBestSeller }: CardProps) {
 	return (
-		<div className="p-4 lg:w-1/3">
+		<div className="p-4 lg:w-1/3 md:w-1/2 w-full">
 			<div className="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+				{isBestSeller && (
+					<span className="absolute top-4 left-4 bg-lime-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+						Best Seller
+					</span>
+				)}
+
 				<h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
 					{category}
 				</h2>
@@ -19,17 +19,17 @@ function Card({ category, title, description }: CardProps) {
 				<p className="leading-relaxed mb-3">{description}</p>
 				<Link
 					className="text-indigo-500 inline-flex items-center"
-					to="#"
+					to={`/products/${id}`}
 				>
 					En savoir plus
 					<svg
 						className="w-4 h-4 ml-2"
 						viewBox="0 0 24 24"
 						stroke="currentColor"
-						stroke-width="2"
+						strokeWidth="2"
 						fill="none"
-						stroke-linecap="round"
-						stroke-linejoin="round"
+						strokeLinecap="round"
+						strokeLinejoin="round"
 					>
 						<path d="M5 12h14"></path>
 						<path d="M12 5l7 7-7 7"></path>

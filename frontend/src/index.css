@@ -1,1 +1,37 @@
 @import "tailwindcss";
+
+.grid-container {
+	display: grid;
+	grid-template-areas:
+		"one one"
+		"two three"
+		"four five"
+		"six six";
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto 1fr auto;
+	gap: 1rem;
+}
+
+.grid-item:nth-child(1) {
+	grid-area: one;
+}
+
+.grid-item:nth-child(2) {
+	grid-area: two;
+}
+
+.grid-item:nth-child(3) {
+	grid-area: three;
+}
+
+.grid-item:nth-child(4) {
+	grid-area: four;
+}
+
+.grid-item:nth-child(5) {
+	grid-area: five;
+}
+
+.grid-item:nth-child(6) {
+	grid-area: six;
+}

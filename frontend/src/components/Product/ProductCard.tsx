@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FaGlasses, FaCartArrowDown } from "react-icons/fa";
 import { useCart } from "../../context/CartContext";
 import ProductImage from "./ProductImage";
 import ProductPrice from "./ProductPrice";
@@ -9,7 +10,7 @@ function ProductCard({ product, isBuy }: ProductCardProps) {
 	return (
 		<div className="bg-white rounded-2xl shadow-lg p-6 max-w-2xl mx-auto">
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-				<ProductImage imageUrl={product.image} name={product.name} />
+				<ProductImage image={product.image} name={product.name} />
 
 				<div className="space-y-4">
 					<div>
@@ -42,6 +43,7 @@ function ProductCard({ product, isBuy }: ProductCardProps) {
 							}}
 						>
 							Acheter
+							<FaCartArrowDown className="h-5 w-5" />
 						</button>
 					) : (
 						<Link
@@ -50,6 +52,7 @@ function ProductCard({ product, isBuy }: ProductCardProps) {
 							type="button"
 						>
 							Voir le produit
+							<FaGlasses className="h-8 w-8" />
 						</Link>
 					)}
 				</div>
