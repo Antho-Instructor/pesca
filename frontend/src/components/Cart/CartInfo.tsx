@@ -1,8 +1,12 @@
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useCart } from "../../context/CartContext";
 function CartInfo({ product }: { product: Product }) {
-	const { removeFromCart, addQuantityInCart, removeQuantityInCart } =
+	const { carts, removeFromCart, addQuantityInCart, removeQuantityInCart } =
 		useCart();
+
+	// Je récupère les informations du produit depuis le contexte CartContext
+	const getProduct = carts.find((item) => item.id === product.id);
+
 	return (
 		<div className="relative rounded-3xl border-2 border-gray-200 p-4 lg:p-8 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4">
 			<div className="col-span-12 lg:col-span-2 img box">
@@ -22,7 +26,9 @@ function CartInfo({ product }: { product: Product }) {
 					<button
 						className="rounded-full group flex items-center justify-center focus-within:outline-red-500"
 						type="button"
-						onClick={() => removeFromCart(product.id)}
+						onClick={() =>
+							getProduct && removeFromCart(getProduct.id)
+						}
 					>
 						<FaRegTrashAlt className="w-6 h-6 text-red-500 group-hover:text-red-600 transition-all duration-500" />
 					</button>
@@ -35,7 +41,9 @@ function CartInfo({ product }: { product: Product }) {
 					<button
 						className="px-3 py-1 border rounded-l-lg border-gray-300 text-gray-700"
 						type="button"
-						onClick={() => removeQuantityInCart(product.id)}
+						onClick={() =>
+							getProduct && removeQuantityInCart(getProduct.id)
+						}
 					>
 						-
 					</button>
@@ -46,7 +54,8 @@ function CartInfo({ product }: { product: Product }) {
 						className="px-3 py-1 border rounded-r-lg border-gray-300 text-gray-700"
 						type="button"
 						onClick={() =>
-							addQuantityInCart(product.id, product.quantity)
+							getProduct &&
+							addQuantityInCart(getProduct.id, getProduct.stock)
 						}
 					>
 						+

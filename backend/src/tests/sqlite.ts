@@ -5,7 +5,8 @@ console.log("📌 Réinitialisation des catégories...");
 console.log(CategoryRepository.getCategories());
 
 const newCategoryId = CategoryRepository.createCategory(
-	"Équipements nautiques"
+	"Équipements nautiques",
+	"equipements-nautiques"
 );
 console.log(
 	"✅ Nouvelle catégorie créée :",
