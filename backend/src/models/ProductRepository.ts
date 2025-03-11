@@ -6,6 +6,15 @@ export class ProductRepository {
 		return db.prepare("SELECT * FROM products").all();
 	}
 
+	// Récupère tous les produits avec une jointure sur la table categories
+	static getProductsJoinCategories() {
+		return db
+			.prepare(
+				"SELECT products.*, categories.name as category_name FROM products JOIN categories ON products.category_id = categories.id"
+			)
+			.all();
+	}
+
 	// Récupère un produit spécifique par ID
 	static getProduct(id: number) {
 		return db.prepare("SELECT * FROM products WHERE id = ?").get(id);
@@ -55,6 +64,15 @@ export class ProductRepository {
 		return db
 			.prepare("SELECT * FROM products WHERE category_id = ? AND id = ?")
 			.get(category_id, product_id);
+	}
+
+	// Récupère tous les produits d'une catégorie
+	static getProductsByCategorySlug(slug: string) {
+		return db
+			.prepare(
+				"SELECT products.*, categories.name as category_name FROM products JOIN categories ON products.category_id = categories.id WHERE categories.slug = ?"
+			)
+			.all(slug);
 	}
 }
 

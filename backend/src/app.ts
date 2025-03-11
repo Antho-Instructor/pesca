@@ -12,6 +12,9 @@ app.use(
 	})
 );
 
+// PUBLIC folder
+app.use("/api", express.static("public"));
+
 // Base URL for the API
 app.use("/api", router);
 

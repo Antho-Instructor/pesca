@@ -12,18 +12,20 @@ export class CategoryRepository {
 	}
 
 	// Crée une nouvelle catégorie
-	static createCategory(name: string) {
-		const stmt = db.prepare("INSERT INTO categories (name) VALUES (?)");
-		const result = stmt.run(name);
+	static createCategory(name: string, slug: string) {
+		const stmt = db.prepare(
+			"INSERT INTO categories (name, slug) VALUES (?, ?)"
+		);
+		const result = stmt.run(name, slug);
 		return result.lastInsertRowid;
 	}
 
 	// Met à jour une catégorie
-	static updateCategory(id: number, name: string) {
+	static updateCategory(id: number, name: string, slug: string) {
 		const stmt = db.prepare(
-			"UPDATE categories SET name = ?, updated_at = datetime('now') WHERE id = ?"
+			"UPDATE categories SET name = ?, slug = ?, updated_at = datetime('now') WHERE id = ?"
 		);
-		return stmt.run(name, id);
+		return stmt.run(name, slug, id);
 	}
 
 	// Supprime une catégorie
@@ -32,12 +34,7 @@ export class CategoryRepository {
 		return stmt.run(id);
 	}
 
-	// Récupère tous les produits d'une catégorie
-	static getAllProductsByCategory(id: number) {
-		return db
-			.prepare("SELECT * FROM products WHERE category_id = ?")
-			.all(id);
-	}
+	
 }
 
 export default new CategoryRepository();
