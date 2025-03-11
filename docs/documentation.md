@@ -8,6 +8,7 @@ La base de donnée utilisé : `SQLite`
 
 -   `categories` : table des catégories de produits
 -   `products` : table des produits
+-   `users` : table des utilisateurs
 
 ### Détails des tables
 
@@ -30,6 +31,14 @@ La base de donnée utilisé : `SQLite`
 -   `created_at` : date de création du produit
 -   `updated_at` : date de mise à jour du produit
 
+#### Table `users`
+
+-   `id` : identifiant de l'utilisateur (clé primaire)
+-   `email` : email de l'utilisateur
+-   `password` : mot de passe de l'utilisateur
+-   `created_at` : date de création de l'utilisateur
+-   `updated_at` : date de mise à jour de l'utilisateur
+
 ## API
 
 Vous pouvez accéder à Swagger à l'adresse suivante : `http://localhost:5050/api-docs`
@@ -42,22 +51,25 @@ Vous pouvez accéder à Swagger à l'adresse suivante : `http://localhost:5050/a
 
 ### 📌 Routes API
 
-| Ressource                          | Méthode  | Endpoint                             | Description                                           | Payload (JSON)                                                                                                                                                                                              |
-| ---------------------------------- | -------- | ------------------------------------ | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Catégories**                     |          |                                      |                                                       |                                                                                                                                                                                                             |
-| Catégories                         | `GET`    | `/categories`                        | Récupère toutes les catégories                        | -                                                                                                                                                                                                           |
-| Catégorie                          | `GET`    | `/categories/:id`                    | Récupère une catégorie spécifique                     | -                                                                                                                                                                                                           |
-| Catégorie                          | `POST`   | `/categories`                        | Crée une nouvelle catégorie                           | `{ "name": "Appâts", "slug": "appats" }`                                                                                                                                                                    |
-| Catégorie                          | `PUT`    | `/categories/:id`                    | Modifie une catégorie existante                       | `{ "name": "Matériel de pêche" }`                                                                                                                                                                           |
-| Catégorie                          | `DELETE` | `/categories/:id`                    | Supprime une catégorie                                | -                                                                                                                                                                                                           |
-| **Produits**                       |          |                                      |                                                       |                                                                                                                                                                                                             |
-| Produits                           | `GET`    | `/products`                          | Récupère tous les produits                            | -                                                                                                                                                                                                           |
-| Produit                            | `GET`    | `/products/:id`                      | Récupère un produit spécifique                        | -                                                                                                                                                                                                           |
-| Produit                            | `POST`   | `/products`                          | Crée un nouveau produit                               | `{ "name": "Leurre Rapala", "description": "Leurre flottant idéal pour les carnassiers.", "price": 12.99, "category_id": 1, "image": "https://exemple.com/images/leurre-rapala.jpg" }`                      |
-| Produit                            | `PUT`    | `/products/:id`                      | Modifie un produit existant                           | `{ "name": "Leurre Rapala XXL", "description": "Version plus grande pour attraper de plus gros poissons.", "price": 19.99, "category_id": 1, "image": "https://exemple.com/images/leurre-rapala-xxl.jpg" }` |
-| Produit                            | `DELETE` | `/products/:id`                      | Supprime un produit                                   | -                                                                                                                                                                                                           |
-| Produits par catégorie             | `GET`    | `/products/category/:slug`           | Récupère tous les produits d'une catégorie            | -                                                                                                                                                                                                           |
-| Produit spécifique d’une catégorie | `GET`    | `/products/category/:id/:product_id` | Récupère un produit spécifique d'une catégorie donnée | -                                                                                                                                                                                                           |
+| Ressource              | Méthode  | Endpoint          | Description                                | Payload (JSON)                                                                                                                                                                                              |
+| ---------------------- | -------- | ----------------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Catégories**         |          |                   |                                            |                                                                                                                                                                                                             |
+| Catégories             | `GET`    | `/categories`     | Récupère toutes les catégories             | -                                                                                                                                                                                                           |
+| Catégorie              | `GET`    | `/categories/:id` | Récupère une catégorie spécifique          | -                                                                                                                                                                                                           |
+| Catégorie              | `POST`   | `/categories`     | Crée une nouvelle catégorie                | `{ "name": "Appâts", "slug": "appats" }`                                                                                                                                                                    |
+| Catégorie              | `PUT`    | `/categories/:id` | Modifie une catégorie existante            | `{ "name": "Matériel de pêche" }`                                                                                                                                                                           |
+| Catégorie              | `DELETE` | `/categories/:id` | Supprime une catégorie                     | -                                                                                                                                                                                                           |
+| Produits par catégorie | `GET`    | `/category/:slug` | Récupère tous les produits d'une catégorie | -                                                                                                                                                                                                           |
+| **Produits**           |          |                   |                                            |                                                                                                                                                                                                             |
+| Produits               | `GET`    | `/products`       | Récupère tous les produits                 | -                                                                                                                                                                                                           |
+| Produit                | `GET`    | `/products/:id`   | Récupère un produit spécifique             | -                                                                                                                                                                                                           |
+| Produit                | `POST`   | `/products`       | Crée un nouveau produit                    | `{ "name": "Leurre Rapala", "description": "Leurre flottant idéal pour les carnassiers.", "price": 12.99, "category_id": 1, "image": "https://exemple.com/images/leurre-rapala.jpg" }`                      |
+| Produit                | `PUT`    | `/products/:id`   | Modifie un produit existant                | `{ "name": "Leurre Rapala XXL", "description": "Version plus grande pour attraper de plus gros poissons.", "price": 19.99, "category_id": 1, "image": "https://exemple.com/images/leurre-rapala-xxl.jpg" }` |
+| Produit                | `DELETE` | `/products/:id`   | Supprime un produit                        | -                                                                                                                                                                                                           |
+| **Utilisateurs**       |          |                   |                                            |                                                                                                                                                                                                             |
+| Inscription            | `POST`   | `/register`       | Inscrit un nouvel utilisateur ⚠️ optionnel | `{ "email": "user@example.com", "password": "securepassword" }`                                                                                                                                             |
+| Connexion              | `POST`   | `/login`          | Connecte un utilisateur                    | `{ "email": "user@example.com", "password": "securepassword" }`                                                                                                                                             |
+|                        |
 
 ## 🗄️ Les models
 
@@ -81,3 +93,8 @@ Vous pouvez accéder à Swagger à l'adresse suivante : `http://localhost:5050/a
 -   `deleteProduct(id: number)` : Supprime un produit
 -   `getProductsByCategorySlug(slug: string)` : Récupère tous les produits d'une catégorie
 -   `getOneProductByCategory(id: number, product_id: number)` : Récupère un produit spécifique d'une catégorie donnée
+
+#### `User`
+
+-   `login(email: string, password: string)` : Connexion de l'utilisateur
+-   `register(email: string, password: string)` : Inscription de l'utilisateur ⚠️ optionnel

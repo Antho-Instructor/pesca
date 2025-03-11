@@ -1,3 +1,12 @@
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email TEXT NOT NULL UNIQUE,
+    role TEXT DEFAULT 'user',
+    password TEXT NOT NULL,
+    created_at TEXT DEFAULT (datetime('now')),
+    updated_at TEXT DEFAULT (datetime('now'))
+);
+
 CREATE TABLE categories (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
@@ -61,3 +70,7 @@ INSERT INTO products (name, description, price, category_id, image, stock) VALUE
 ('Canne Abu Garcia Veritas (94)', 'Canne ultra légère et résistante', 160.53, 1, 'cannes-garcia-veritas.webp', 27),
 ('Fil tressé Power Pro (82)', 'Fil tressé haute résistance', 24.06, 4, 'accessoire-fil-tresse.jpg', 59),
 ('Trousse à leurres Rapala (29)', 'Trousse de rangement pour leurres', 29.02, 4, 'accessoire-trousse-leurres.jpg', 67);
+
+INSERT INTO users (email, password, role) VALUES
+('admin@pesca.com', 'MOT2passe!', 'admin'),
+('user@pesca.com', 'MOT2passe!', 'user');
