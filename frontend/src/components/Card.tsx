@@ -5,7 +5,7 @@ function Card({ category, title, description, id, isBestSeller }: CardProps) {
 		<div className="p-4 lg:w-1/3 md:w-1/2 w-full">
 			<div className="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
 				{isBestSeller && (
-					<span className="absolute top-4 left-4 bg-lime-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+					<span className="absolute top-4 left-4 bg-[#1b9778] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
 						Best Seller
 					</span>
 				)}

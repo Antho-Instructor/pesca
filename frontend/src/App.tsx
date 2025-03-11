@@ -16,7 +16,7 @@ function App() {
 							title={product.name}
 							description={product.description}
 							category={product.category_name}
-							isBestSeller={product.id === 1 || product.id === 2}
+							isBestSeller={product.id === 1 || product.id === 3}
 						/>
 					))}
 				</div>

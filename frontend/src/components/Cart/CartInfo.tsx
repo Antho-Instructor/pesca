@@ -4,7 +4,6 @@ function CartInfo({ product }: { product: Product }) {
 	const { carts, removeFromCart, addQuantityInCart, removeQuantityInCart } =
 		useCart();
 
-	// Je récupère les informations du produit depuis le contexte CartContext
 	const getProduct = carts.find((item) => item.id === product.id);
 
 	return (
