@@ -44,3 +44,9 @@ interface CardProps {
 	id: number;
 	isBestSeller?: boolean;
 }
+
+interface Category {
+	id: number;
+	name: string;
+	slug: string;
+}

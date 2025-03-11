@@ -1,16 +1,17 @@
-import { Link, NavLink } from "react-router-dom";
-import { FaCartArrowDown } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { api } from "../helpers/api.ts";
+import { Link, NavLink } from "react-router-dom";
+import { FaCartArrowDown, FaRegUserCircle } from "react-icons/fa";
+import { RiAdminLine } from "react-icons/ri";
+import { MdLogout } from "react-icons/md";
 
-interface Category {
-	id: number;
-	name: string;
-	slug: string;
-}
+import { useAuth } from "../context/AuthContext.tsx";
+import { api } from "../helpers/api.ts";
 
 function Navbar() {
 	const [categories, setCategories] = useState<Category[]>([]);
+
+	const { user, handleLogout } = useAuth();
+
 	useEffect(() => {
 		const fetchData = async () => {
 			const response = await api.get("/categories");
@@ -52,6 +53,32 @@ function Navbar() {
 					Panier
 					<FaCartArrowDown className="ml-1 h-6 w-6" />
 				</Link>
+				<div className="flex md:ml-auto md:mr-auto">
+					{user ? (
+						<>
+							<button
+								className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 ml-1"
+								type="button"
+								onClick={handleLogout}
+							>
+								<MdLogout className="ml-1 h-6 w-6" />
+							</button>
+							<Link
+								to="#"
+								className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 ml-1"
+							>
+								<RiAdminLine className="ml-1 h-6 w-6" />
+							</Link>
+						</>
+					) : (
+						<Link
+							to="/login"
+							className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 ml-1"
+						>
+							<FaRegUserCircle className="ml-1 h-6 w-6" />
+						</Link>
+					)}
+				</div>
 			</div>
 		</header>
 	);

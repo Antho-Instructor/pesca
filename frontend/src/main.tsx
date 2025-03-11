@@ -9,6 +9,9 @@ import Cart from "./pages/Cart.tsx";
 import { CartProvider } from "./context/CartContext.tsx";
 import UniqueProduct from "./components/UniqueProduct.tsx";
 import { ToastContainer } from "react-toastify";
+import { AuthProvider } from "./context/AuthContext.tsx";
+import Login from "./pages/Login.tsx";
+import Signup from "./pages/Signup.tsx";
 
 const router = createBrowserRouter(
 	[
@@ -62,6 +65,14 @@ const router = createBrowserRouter(
 					path: "/cart",
 					element: <Cart />,
 				},
+				{
+					path: "/login",
+					element: <Login />,
+				},
+				{
+					path: "/signup",
+					element: <Signup />,
+				},
 			],
 		},
 	],
@@ -79,24 +90,26 @@ if (rootElement === null) {
 }
 
 createRoot(rootElement).render(
-	<CartProvider>
-		<RouterProvider
-			router={router}
-			future={{
-				v7_startTransition: true,
-			}}
-		/>
-		<ToastContainer
-			position="top-right"
-			autoClose={5000}
-			hideProgressBar={false}
-			newestOnTop={false}
-			closeOnClick
-			rtl={false}
-			pauseOnFocusLoss
-			draggable
-			pauseOnHover
-			theme="colored"
-		/>
-	</CartProvider>
+	<AuthProvider>
+		<CartProvider>
+			<RouterProvider
+				router={router}
+				future={{
+					v7_startTransition: true,
+				}}
+			/>
+			<ToastContainer
+				position="top-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="colored"
+			/>
+		</CartProvider>
+	</AuthProvider>
 );
