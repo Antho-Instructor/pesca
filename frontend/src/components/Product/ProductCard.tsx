@@ -65,7 +65,7 @@ function ProductCard({ product, isBuy }: ProductCardProps) {
 								</button>
 							</div>
 							<button
-								className={`w-full bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 transition-transform transform active:scale-90 flex items-center justify-center gap-2 ${
+								className={`w-full bg-[#1b9778]  text-white py-3 px-6 rounded-lg hover:bg-[#3b7a6a] transition-transform transform active:scale-90 flex items-center justify-center gap-2 ${
 									product.stock === 0 &&
 									"cursor-not-allowed opacity-50"
 								} `}
@@ -82,7 +82,7 @@ function ProductCard({ product, isBuy }: ProductCardProps) {
 					) : (
 						<Link
 							to={`/products/${product.id}`}
-							className="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2"
+							className="w-full bg-[#1b9778] text-white py-3 px-6 rounded-lg hover:hover:bg-[#3b7a6a]  transition-transform transform active:scale-90 flex items-center justify-center gap-2"
 							type="button"
 						>
 							Voir le produit

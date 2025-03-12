@@ -14,12 +14,6 @@ type ChildrenType = {
 	children: React.ReactNode;
 };
 
-type User = {
-	id: number;
-	email: string;
-	role: string;
-};
-
 export function AuthProvider({ children }: ChildrenType) {
 	useEffect(() => {
 		const user = JSON.parse(localStorage.getItem("user") || "null");

@@ -8,7 +8,7 @@ function App() {
 	return (
 		<section className="text-gray-600 body-font">
 			<div className="container px-5 py-16 mx-auto">
-				<div className="flex flex-wrap -m-4">
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 					{data.slice(0, 3).map((product: Product) => (
 						<Card
 							key={product.id}

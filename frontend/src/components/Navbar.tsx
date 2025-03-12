@@ -55,7 +55,23 @@ function Navbar() {
 				</Link>
 				<div className="flex md:ml-auto md:mr-auto">
 					{user ? (
-						<>
+						user.role === "admin" ? (
+							<>
+								<button
+									className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 ml-1"
+									type="button"
+									onClick={handleLogout}
+								>
+									<MdLogout className="ml-1 h-6 w-6" />
+								</button>
+								<Link
+									to="/admin"
+									className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 ml-1"
+								>
+									<RiAdminLine className="ml-1 h-6 w-6" />
+								</Link>
+							</>
+						) : (
 							<button
 								className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 ml-1"
 								type="button"
@@ -63,13 +79,7 @@ function Navbar() {
 							>
 								<MdLogout className="ml-1 h-6 w-6" />
 							</button>
-							<Link
-								to="#"
-								className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 ml-1"
-							>
-								<RiAdminLine className="ml-1 h-6 w-6" />
-							</Link>
-						</>
+						)
 					) : (
 						<Link
 							to="/login"

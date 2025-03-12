@@ -50,3 +50,9 @@ interface Category {
 	name: string;
 	slug: string;
 }
+
+interface User {
+	id: number;
+	email: string;
+	role: string;
+}

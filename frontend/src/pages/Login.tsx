@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { LiaEyeSolid, LiaEyeSlash } from "react-icons/lia";
+
 import { useAuth } from "../context/AuthContext";
 import { api } from "../helpers/api";
 import { showToast } from "../helpers/toast";
@@ -11,9 +13,14 @@ function Login() {
 		password: "",
 	});
 	const [checked, setChecked] = useState(false);
+	const [showPassword, setShowPassword] = useState("password");
 
 	const handleCheckebox = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setChecked(e.target.checked);
+	};
+
+	const handleShowPassword = () => {
+		setShowPassword((prev) => (prev === "password" ? "text" : "password"));
 	};
 
 	const { handleLogin } = useAuth();
@@ -32,6 +39,7 @@ function Login() {
 
 		try {
 			const response = await api.post("/login", login);
+
 			if (!response.data) {
 				showToast("error", "Email ou mot de passe incorrect");
 				return;
@@ -44,7 +52,7 @@ function Login() {
 				localStorage.setItem("user", JSON.stringify(user));
 			}
 
-			nav("/cart");
+			nav("/");
 		} catch (error) {
 			console.error("Error:", error);
 		}
@@ -78,7 +86,7 @@ function Login() {
 										onChange={handleChange}
 										required
 										autoComplete="email"
-										className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+										className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
 									/>
 								</div>
 							</div>
@@ -90,17 +98,27 @@ function Login() {
 								>
 									Mot de passe
 								</label>
-								<div className="mt-2">
+								<div className="mt-2 flex items-center justify-between gap-3">
 									<input
 										id="password"
 										name="password"
-										type="password"
+										type={showPassword}
 										required
 										value={login.password}
 										onChange={handleChange}
 										autoComplete="current-password"
-										className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+										className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
 									/>
+									<button
+										type="button"
+										onClick={handleShowPassword}
+									>
+										{showPassword === "password" ? (
+											<LiaEyeSolid className="w-6 h-6" />
+										) : (
+											<LiaEyeSlash className="w-6 h-6" />
+										)}
+									</button>
 								</div>
 							</div>
 

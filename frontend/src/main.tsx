@@ -12,6 +12,7 @@ import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import Login from "./pages/Login.tsx";
 import Signup from "./pages/Signup.tsx";
+import Admin from "./pages/Admin.tsx";
 
 const router = createBrowserRouter(
 	[
@@ -60,6 +61,10 @@ const router = createBrowserRouter(
 							return null;
 						}
 					},
+				},
+				{
+					path: "/admin",
+					element: <Admin />,
 				},
 				{
 					path: "/cart",
