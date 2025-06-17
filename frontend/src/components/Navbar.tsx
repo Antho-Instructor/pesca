@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import { FaCartArrowDown, FaRegUserCircle } from "react-icons/fa";
 import { RiAdminLine } from "react-icons/ri";
 import { MdLogout } from "react-icons/md";
-
 import { useAuth } from "../context/AuthContext.tsx";
 import { api } from "../helpers/api.ts";
 
